@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  monolithic:
+    build: ./backend
+    depends_on:
+      - dbmongo
+
+  ssr:
+    build: ./frontend
+    depends_on:
+      - monolithic
+
+  dbmongo:
+    image: mongo
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./frontend/csr/dist/proyectoweb2/browser:/var/www/app/
+    depends_on:
+      - monolithic

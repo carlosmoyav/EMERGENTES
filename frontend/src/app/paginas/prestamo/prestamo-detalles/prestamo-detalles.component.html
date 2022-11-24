@@ -1,0 +1,76 @@
+<div *ngIf="editado" class="alert alert-success">
+    <strong>El prestamo ha sido editado con éxito</strong>
+</div>
+
+<div *ngIf='prestamo' class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{ pageTitle }}
+    </div>
+
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>Titulo:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="prestamo.libro.nombre" type="text" name="" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Cliente:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="prestamo.cliente.nombre +' '+ prestamo.cliente.apellido" type="text" name=""
+                            disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Cédula:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="prestamo.cliente.cedula" type="text" name="" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Fecha Prestamo:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="prestamo.prestamo.fecha" type="text" name="" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Fecha Estimada Devolucion:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="prestamo.prestamo.fecha_dev_est" type="text" name="" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Fecha Devolucion:</div>
+                    <div class='col-md-6'>
+                        <dp-date-picker placeholder="Fecha Devolucion" [(ngModel)]="fecha_devolucion"
+                            [disabled]="!editando" requerid></dp-date-picker>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <button type="button" class="btn btn-primary" (click)="editar()"
+                            [disabled]="!prestamo.prestamo.estado">
+                            {{editando ? 'Aceptar Cambios' : 'Editar'}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='regresar()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Atrás
+        </a>
+    </div>
+</div>

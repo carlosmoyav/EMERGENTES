@@ -1,0 +1,82 @@
+<div *ngIf="creado" class="alert alert-success">
+    <strong>El libro ha sido editado con éxito</strong>
+</div>
+<div *ngIf="libro" class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle+ ': ' + libro.nombre}}
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-5'>Titulo:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="libro.nombre" type="text" name="" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-5'>Referencia:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="libro.ref" type="text" name="" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-5'>Autor:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="libro.autor" type="text" name="" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-5'>ISBN:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="libro.isbn" type="text" name="" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-5'>Prestar a:</div>
+                    <div class='col-md-6'>
+                        <!-- <input [(ngModel)]="prestamo.id_cliente" type="text" name=""> -->
+
+                        <!-- <ng-select2 width=100% (change)="changeFn(selection)" [(ngModel)]="selection">
+                            <option *ngFor=" let cliente of clientes " (value)="cliente._id">
+                                {{cliente.nombre}} {{cliente.apellido}} - {{cliente.cedula}}
+                            </option>
+                        </ng-select2> -->
+                        <ng-select [(ngModel)]="ClienteIdSeleccionado">
+                            <ng-option *ngFor="let cliente of clientes" [value]="cliente._id">{{cliente.nombre}}
+                                {{cliente.apellido}} - {{cliente.cedula}}
+                            </ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-5'>Fecha de prestamo:</div>
+                    <div class='col-md-6'>
+                        <dp-date-picker [(ngModel)]="prestamo.fecha"></dp-date-picker>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-5'>Fecha estimada de devolucion:</div>
+                    <div class='col-md-6'>
+                        <dp-date-picker [(ngModel)]="prestamo.fecha_dev_est"></dp-date-picker>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <button (click)="agregarPrestamo()" type="button" class="btn btn-primary">
+                            Prestar
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,89 @@
+<div *ngIf="editado" class="alert alert-success">
+    <strong>El Cliente ha sido editado con éxito</strong>
+</div>
+
+<!-- <ng-template #contenido let-modal>
+  <div class="modal-header">
+      <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      Este es el contenido de este modal. Este es el contenido de este modal. Este es el contenido de este modal. Este es el contenido de este modal. Este es el contenido de este modal. Este es el contenido de este modal. Este es el contenido de este modal.
+      Este es el contenido de este modal. Este es el contenido de este modal.
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="modal.close()">Ok!</button>
+  </div>
+</ng-template> -->
+
+
+
+<div *ngIf='cliente' class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{ pageTitle + ': ' + cliente.nombre }}
+        <!-- <button (click)="modal.open(contenido)" class="btn btn-success">Prestar Libro</button> -->
+    </div>
+
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>Cédula:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="cliente.cedula" type="text" name="" [disabled]="!editando">
+                    </div>
+                    
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Nombres:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="cliente.nombre" type="text" name="" [disabled]="!editando">
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Apellidos:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="cliente.apellido" type="text" name="" [disabled]="!editando">
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Email:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="cliente.email" type="text" name="" [disabled]="!editando">
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Dirección:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="cliente.direccion" type="text" name="" [disabled]="!editando">
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <button type="button" class="btn btn-primary" (click)="editar()">
+                            {{editando ? 'Aceptar Cambios' : 'Editar'}}
+                        </button>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='regresar()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Atrás
+        </a>
+    </div>
+</div>

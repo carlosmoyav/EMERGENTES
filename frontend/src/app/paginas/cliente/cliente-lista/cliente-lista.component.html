@@ -1,0 +1,99 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        Clientes ({{ clientes && clientes.length ? clientes.length + ' ' : '' }}en total)
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-3'>
+                <h1>Filtrar</h1>
+                <mat-form-field appearance="outline">
+                    <mat-label for="filtrar">Filtrar por cedula</mat-label>
+                    <input id="filtrar" type='text' [(ngModel)]='listFilter' matInput placeholder="Ex. 1313214569">
+                    <mat-icon matSuffix>badge</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+        <hr>
+        <h1>Crear cliente</h1>
+        <div class="row">
+            <form (ngSubmit)="agregarCliente()" [formGroup]="clienteForm">
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label for="nombres">Nombres</mat-label>
+                        <input matInput id="nombres" name="nombres "
+                        required type='text' formControlName="nombre" placeholder="Ex. Solomeo Juan">
+                        <mat-icon matSuffix>face</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-3 ">
+                    <mat-form-field appearance="outline">
+                        <mat-label for="apellidos">Apellidos</mat-label>
+                        <input matInput id="apellidos" name="apellidos "
+                        required type='text' formControlName="apellido" placeholder="Ex. Paredes Espinal">
+                        <mat-icon matSuffix>face</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-3 ">
+                    <mat-form-field appearance="outline">
+                        <mat-label for="cedula">Cedula</mat-label>
+                        <input matInput id="cedula" name="cedula "
+                        required type='text' formControlName="cedula" placeholder="Ex. 1313214569">
+                        <mat-icon matSuffix>badge</mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-3 ">
+                    <mat-form-field appearance="outline">
+                        <mat-label for="email ">Email</mat-label>
+                        <input matInput id="email " name="email "
+                        required type='email' formControlName="email" placeholder="Ex. example@outlook.com">
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-3 ">
+                    <mat-form-field appearance="outline">
+                        <mat-label for="direccion  ">Dirección</mat-label>
+                        <input matInput id="direccion " name="direccion "
+                        required type='text' formControlName="direccion" placeholder="Ex. calle 13">
+                        <mat-icon matSuffix>place</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-10 ">
+                    <div>&nbsp;</div>
+                    <button type="submit" [disabled]="clienteForm.invalid" class="btn btn-primary ">Agregar</button>
+                </div>
+            </form>
+        </div>
+        <hr>
+
+        <div class='table-responsive'>
+            <img *ngIf="loading " id="loading "
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <table class='table' *ngIf='clientes && clientes.length'>
+                <thead>
+                    <tr>
+                        <th>Cédula</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
+                        <th>Dirección</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let cliente of clientesFiltrados'>
+                        <td><a [routerLink]=" [ '/cliente', cliente._id] ">{{ cliente.cedula }}</a></td>
+                        <td>{{ cliente.nombre }}</td>
+                        <td>{{ cliente.apellido }}</td>
+                        <td>{{ cliente.email }}</td>
+                        <td>{{ cliente.direccion }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>

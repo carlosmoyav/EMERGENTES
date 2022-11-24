@@ -1,0 +1,33 @@
+{
+  "name": "microservices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express-async-errors": "^3.1.1",
+    "awilix": "^4.3.4",
+    "bcrypt": "^5.0.0",
+    "helmet": "^4.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "swagger-ui-express": "^4.1.6",
+    "memory-cache": "^0.2.0",
+    "mongoose": "^5.13.7",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "jest": "^27.0.4",
+    "mockingoose": "^2.15.2",
+    "nodemon": "^2.0.7"
+  }
+}

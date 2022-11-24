@@ -1,0 +1,96 @@
+<!-- <h1 style="text-align:center;">
+    Registro</h1>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <mat-form-field>
+            <input type='text' matInput placeholder="Nombres" [formControl]="nombres" autofocus required>
+            <mat-error *ngIf="nombres.invalid">
+                {{getErrorMessageNombres()}}</mat-error>
+        </mat-form-field>
+        <span class="spacer-labels"></span>
+        <mat-form-field>
+            <input type='text' matInput placeholder="Apellidos" [formControl]="apellidos" required>
+            <mat-error *ngIf="apellidos.invalid">
+                {{getErrorMessageApellidos()}}</mat-error>
+        </mat-form-field>
+        <span class="spacer-labels"></span>
+        <mat-form-field>
+            <input type='text' matInput placeholder="Nombre biblioteca" [formControl]="nombrebiblioteca" required>
+            <mat-error *ngIf="nombrebiblioteca.invalid">
+                {{getErrorMessageBiblioteca()}}</mat-error>
+        </mat-form-field>
+        <span class="spacer-labels"></span>
+        <mat-form-field>
+            <input type='email' matInput placeholder="Email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">
+                {{getErrorMessageEmail()}}</mat-error>
+        </mat-form-field>
+        <span class="spacer-labels"></span>
+        <mat-form-field>
+            <input type="password" matInput placeholder="Password" [formControl]="password" required>
+            <mat-error *ngIf="password.invalid">
+                {{getErrorMessagePassword()}}</mat-error>
+        </mat-form-field>
+        <span class="spacer-button"></span>
+        <button mat-flat-button color="primary" type="submit">Registrar</button>
+    </div>
+</form> -->
+
+<body>
+    <div class="login-form">
+        <h2 class="titulo">Sistema de Gestión Biblioteca</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <h2 class="text-center">Registro Biblioteca</h2>
+            <div class="form-group">
+                <mat-form-field>
+                    <input type='text' matInput placeholder="Nombres" formControlName="nombres" autofocus required>
+                    <mat-error *ngIf="nombres.invalid">
+                        {{getErrorMessageNombres()}}</mat-error>
+                    <!-- <input matInput type="text" [formControl]="email" placeholder="Correo Electrónico" autofocus required>
+                    <mat-error *ngIf="email.invalid"><br> {{getErrorMessageEmail()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+                <mat-form-field>
+                    <input type='text' matInput placeholder="Apellidos" formControlName="apellidos" required>
+                    <mat-error *ngIf="apellidos.invalid">
+                        {{getErrorMessageApellidos()}}</mat-error>
+                    <!-- <input matInput type="password" [formControl]="password" placeholder="Contraseña" required>
+                    <mat-error *ngIf="password.invalid"><br> {{getErrorMessagePassword()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+                <mat-form-field>
+                    <input type='text' matInput placeholder="Nombre biblioteca" formControlName="nombrebiblioteca" required>
+                    <mat-error *ngIf="nombrebiblioteca.invalid">
+                        {{getErrorMessageBiblioteca()}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+                <mat-form-field>
+                    <input type='email' matInput placeholder="Email" formControlName="email" required>
+                    <mat-error *ngIf="email.invalid">
+                        {{getErrorMessageEmail()}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+                <mat-form-field>
+                    <input type="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" formControlName="password" required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="password.invalid">
+                        {{getErrorMessagePassword()}}</mat-error>
+                </mat-form-field>
+            </div>
+            <span class="spacer-labels"></span>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="registerForm.invalid">Registrarse</button>
+            </div>
+            <div class="clearfix">
+            </div>
+        </form>
+    </div>
+</body>

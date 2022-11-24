@@ -1,0 +1,90 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        Libros ({{ libros && libros.length ? libros.length + ' ' : '' }}en total)
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-3'>
+                <h1>Filtrar</h1>
+                <mat-form-field appearance="outline">
+                    <mat-label for="filtro">Filtrar por titulo</mat-label>
+                    <input id="filtro" type='text' [(ngModel)]='listFilter' matInput placeholder="Ex. Aplicaciones web">
+                    <mat-icon matSuffix>title</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+        <hr>
+        <h1>Crear libro</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                    <mat-label for="titulo">Título</mat-label>
+                    <input matInput id="titulo" name="titulo"
+                    required type='text' [(ngModel)]="libro.nombre" placeholder="Ex. Aplicaciones web">
+                    <mat-icon matSuffix>title</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                    <mat-label for="autor">Autor(es)</mat-label>
+                    <input matInput id="autor" name="titulo"
+                    required type='text' [(ngModel)]="libro.autor" placeholder="Ex. Julio Jaramillo">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 ">
+                <mat-form-field appearance="outline">
+                    <mat-label for="referencia">Referencia</mat-label>
+                    <input matInput id="referencia" name="referencia"
+                    required type='text' [(ngModel)]="libro.ref" placeholder="Ex. RF001">
+                    <mat-icon matSuffix>bookmark_border</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-3 ">
+                <mat-form-field appearance="outline">
+                    <mat-label for="isbn">ISBN</mat-label>
+                    <input matInput id="isbn" name="isbn"
+                    required type='text' [(ngModel)]="libro.isbn" placeholder="Ex. 12356123">
+                    <mat-icon matSuffix>source</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-3 ">
+                <div>&nbsp;</div>
+                <button (click)="agregarLibro() " class="btn btn-primary ">Agregar</button>
+            </div>
+        </div>
+        <hr>
+
+        <div class='table-responsive'>
+            <img *ngIf="loading " id="loading "
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <table class='table' *ngIf='libros && libros.length'>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Referencia</th>
+                        <th>ISBN</th>
+                        <th>Estado</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let libro of librosFiltrados'>
+                        <td><a [routerLink]=" [ '/libro', libro._id] ">{{ libro.nombre }}</a></td>
+                        <td>{{ libro.autor }}</td>
+                        <td>{{ libro.ref }}</td>
+                        <td>{{ libro.isbn }}</td>
+                        <td>{{ libro.estado == true ? 'Disponible' : 'No disponible' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>

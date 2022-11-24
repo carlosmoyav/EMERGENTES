@@ -1,0 +1,50 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle}} ({{ prestamos && prestamos.length ? prestamos.length + ' ' : '' }}en total)
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-3'>
+                <h1>Filtrar</h1>
+                <mat-form-field appearance="outline">
+                    <mat-label for="filtrar">Filtrar por cedula</mat-label>
+                    <input type='text' [(ngModel)]='listFilter' matInput placeholder="Ex. 1313214569">
+                    <mat-icon matSuffix>badge</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+        <hr>
+        <div class='table-responsive'>
+            <img *ngIf="loading " id="loading "
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <table class='table' *ngIf='prestamos && prestamos.length'>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Cliente</th>
+                        <th>Cédula</th>
+                        <th>Fecha Prestamo</th>
+                        <th>Fecha Estimada Devolucion</th>
+                        <th>Fecha Devolucion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let prestamo of prestamosFiltrados'>
+                        <td><a [routerLink]=" [ '/prestamo',prestamo.prestamo._id] ">{{ prestamo.libro.nombre }}</a>
+                        </td>
+                        <td>{{ prestamo.cliente.nombre }}</td>
+                        <td>{{ prestamo.cliente.cedula }}</td>
+                        <td>{{ prestamo.prestamo.fecha}}</td>
+                        <td>{{ prestamo.prestamo.fecha_dev_est}}</td>
+                        <td>{{ prestamo.prestamo.fecha_dev}}</td>
+
+                        <!-- <td>{{ libro.estado == true ? 'disponible' : 'no disponible' }}</td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>

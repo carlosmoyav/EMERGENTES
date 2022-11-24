@@ -1,0 +1,85 @@
+<div *ngIf="editado" class="alert alert-success">
+    <strong>El Usuario ha sido editado con éxito</strong>
+</div>
+
+<div *ngIf='usuario' class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{ pageTitle + ': ' + usuario.nombre }}
+    </div>
+
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>Nombres:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="usuario.nombre" type="text" name="nombres" [disabled]="!editando">
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Apellidos:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="usuario.apellido" type="text" name="apellidos" [disabled]="!editando">
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Email:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="usuario.email" type="text" name="email" [disabled]="!editando">
+                    </div>
+                </div>
+                <br>
+                <!-- <div class='row'>
+                    <div class='col-md-3'>Contraseña:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="usuario.usuario_contrasena" type="password" name="estado" [disabled]="!editando">
+                    </div>
+                </div>
+                <br> -->
+                <div class='row'>
+                    <div class='col-md-3'>Tipo:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="usuario.tipo" type="text" name="tipo" [disabled]="!editando">
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>Estado:</div>
+                    <div class='col-md-6'>
+                        <input [(ngModel)]="usuario.estado" type="text" name="estado" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <button type="button" class="btn btn-primary" (click)="editar()">
+                            {{editando ? 'Aceptar Cambios' : 'Editar'}}
+                        </button>
+                    </div>
+                    <div class='col-md-3'>
+                        <button type="button" class="btn btn-danger" (click)="deshabilitar()">Deshabilitar
+                        </button>
+                    </div>
+                    <div class='col-md-3'>
+                        <button type="button" class="btn btn-success" (click)="habilitar()">Habilitar
+                        </button>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='regresar()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Atrás
+        </a>
+    </div>
+</div>

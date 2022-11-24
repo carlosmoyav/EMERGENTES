@@ -1,0 +1,18 @@
+<div *ngIf='usuario'>
+    <mat-toolbar color="primary" class="example-toolbar">
+        <h1 class="example-app-name">SGB</h1>
+        <a mat-button class="sin_link" [routerLink]="'/libros'">Libros</a>
+        <a mat-button class="sin_link" *ngIf='admin' [routerLink]="'/usuarios'">Usuarios</a>
+        <a mat-button class="sin_link" [routerLink]="'/clientes'">Clientes</a>
+        <a mat-button class="sin_link" [routerLink]="'/prestamos'">Préstamos</a>
+
+        <div class="spacer"></div>
+        <h1 class="nombre_usuario">Bienvenido, {{usuario_nombre}}</h1>
+        <button mat-flat-button color="warn" (click)="cerrarsesion()">
+            Cerrar sesión
+        </button>
+    </mat-toolbar>
+    <div class='container'>
+        <router-outlet></router-outlet>
+    </div>
+</div>

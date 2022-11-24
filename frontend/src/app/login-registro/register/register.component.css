@@ -1,0 +1,78 @@
+/* .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 450px;
+    background: rgba(217, 143, 219, 0.226);
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container>* {
+    width: 80%;
+}
+
+.container .spacer-labels {
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container .spacer-button {
+    padding-top: 30px;
+}
+
+h1 {
+    padding-top: 20px;
+} */
+
+body {
+    display: flex;
+    background-image: url('..\..\..\assets\images\bg2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.login-form {
+    width: 340px;
+    margin: 50px auto;
+}
+
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.login-form h2 {
+    margin: 0 0 15px;
+}
+
+.form-control,
+.btn {
+    min-height: 38px;
+    border-radius: 15px;
+}
+
+.btn {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.titulo {
+    color: white;
+    text-align: center;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.spacer-labels {
+    padding-top: 10px;
+}
